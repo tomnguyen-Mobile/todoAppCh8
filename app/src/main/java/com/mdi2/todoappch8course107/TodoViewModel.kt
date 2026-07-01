@@ -18,17 +18,23 @@ class TodoViewModel : ViewModel() {
 
     // challenge create the function addTask() here
     // title should not be blank
-    fun addTask(title:String){
-        if (title.isNotBlank()) {
-            viewModelScope.launch{ // launch a non-blocking thread
-                withContext(Dispatchers.IO){
-                    simulateSlowOperation() // this blocks the UI thread for x amount of seconds
 
-                } // end of with context
-            } // end of viewModelScope
-            _tasks.add( Task( id=_nextId++, title=title.trim() ) )
+    fun addTask(title: String){
+        if (title.isNotBlank()) {
+            _tasks.add(Task(id = _nextId++, title=title.trim()))
         }
     }
+//    fun addTask(title:String){
+//        if (title.isNotBlank()) {
+//            viewModelScope.launch{ // launch a non-blocking thread
+//                withContext(Dispatchers.IO){
+//                    simulateSlowOperation() // this blocks the UI thread for x amount of seconds
+//
+//                } // end of with context
+//            } // end of viewModelScope
+//            _tasks.add( Task( id=_nextId++, title=title.trim() ) )
+//        }
+//    }
 
     fun removeTask( taskId: Int ){
         _tasks.removeAll{ it.id == taskId}
