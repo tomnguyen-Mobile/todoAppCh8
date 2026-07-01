@@ -27,7 +27,7 @@ class TodoScreenTest {
     fun setUp() {
         _viewModel = TodoViewModel()
 
-        // set up the composeable with the viewModel -- asme as MainActivity does
+        // set up the composeable with the viewModel -- same as MainActivity does
         composeTestRule.setContent {
             Surface(
                 color = MaterialTheme.colorScheme.background
@@ -50,7 +50,7 @@ class TodoScreenTest {
 
         // click on the add button
         composeTestRule
-            . onNodeWithTag("add_button")
+            .onNodeWithTag("add_button")
             .performClick()
 
     // Assert - verify the task does not exist yet

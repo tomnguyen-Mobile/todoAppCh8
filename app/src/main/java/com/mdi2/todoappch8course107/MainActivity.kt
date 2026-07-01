@@ -21,6 +21,8 @@ class MainActivity : ComponentActivity() {
     private val _viewModel: TodoViewModel by viewModels ()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppState.initialize(this.applicationContext) // creating the same one not creating new one
+//        AppState.initialize(this) // creating memory leak
         enableEdgeToEdge()
         setContent {
             ToDoAppCh8Course107Theme {
