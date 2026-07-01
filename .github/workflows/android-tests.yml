@@ -1,0 +1,21 @@
+name: Run Android Tests
+on: push
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest # runs on latest ubuntu OS
+    steps:
+      - name: Check code
+        uses: actions/checkout@v4 # uses checkout version 4
+
+      - name: Set up JDK 17 # Java Development kit
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin' # popular version for ubuntu, maintain by eclipse foundation
+
+      - name: Make gradlew exe
+        run: chmod +x ./gradlew
+
+      - name: Run Unit Test
+        run: ./gradlew test
